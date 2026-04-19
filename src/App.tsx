@@ -154,7 +154,6 @@ function App() {
         <section className="hero">
           <div className="hero__copy reveal-up">
             <p className="hero__label">Workout Tracker & Fitness Log</p>
-            <span className="hero__keyword">LOGIT</span>
             <h1>Full-speed workout logging with a clearer view of progress.</h1>
             <p className="hero__lead">
               Built for lifters who want fast set entry, structured templates,
@@ -273,42 +272,36 @@ function App() {
         </section>
 
         <section className="pro" id="pro">
-          <div className="pro__intro reveal-up">
-            <p className="section-heading__eyebrow">LOGIT Pro</p>
-            <h2>Advanced tracking without changing the rhythm.</h2>
-            <p>
-              Measurements, charts, and smart template capture extend the same
-              logging flow instead of feeling like separate tools.
-            </p>
-          </div>
+          <div className="pro-card reveal-up">
+            <div className="pro-card__copy">
+              <p className="section-heading__eyebrow">LOGIT Pro</p>
+              <h2>Advanced tracking without changing the rhythm.</h2>
+              <p className="pro-card__lead">
+                Measurements, charts, and smart template capture extend the same
+                logging flow instead of feeling like separate tools.
+              </p>
 
-          <div className="pro__grid">
-            <div className="pro__screens reveal-up" style={{ animationDelay: "100ms" }}>
-              <DeviceShot
-                image={screenshots.bodyFat}
-                alt="LOGIT body metrics screen on iPhone"
-                tone="teal"
-                zoom={0.72}
-              />
-              <DeviceShot
-                image={screenshots.superDropSet}
-                alt="LOGIT dropset workout screen on iPhone"
-                tone="rose"
-                zoom={0.72}
-              />
+              <div className="pro-card__panel">
+                <span className="pro__kicker">Upgrade without changing pace</span>
+                <ul className="pro-list">
+                  {proFeatures.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <a className="button button--primary pro-card__cta" href={appStoreUrl} target="_blank" rel="noreferrer">
+                  <Download size={16} />
+                  <span>View on the App Store</span>
+                </a>
+              </div>
             </div>
 
-            <div className="pro__panel reveal-up" style={{ animationDelay: "180ms" }}>
-              <span className="pro__kicker">Upgrade without changing pace</span>
-              <ul className="pro-list">
-                {proFeatures.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-              <a className="button button--primary" href={appStoreUrl} target="_blank" rel="noreferrer">
-                <Download size={16} />
-                <span>View on the App Store</span>
-              </a>
+            <div className="pro-card__visual reveal-up" style={{ animationDelay: "100ms" }}>
+              <DeviceShot
+                image={screenshots.bodyFat}
+                alt="LOGIT chart detail screen on iPhone"
+                tone="teal"
+                zoom={0.9}
+              />
             </div>
           </div>
         </section>

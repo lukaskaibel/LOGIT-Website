@@ -104,8 +104,9 @@ img {
 .brand {
   gap: 10px;
   font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-family: "SF Pro Display", "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -167,8 +168,7 @@ img {
 .hero__label,
 .section-heading__eyebrow,
 .pro__kicker,
-.story-card__keyword,
-.hero__keyword {
+.story-card__keyword {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -182,17 +182,10 @@ img {
   font-size: 0.82rem;
 }
 
-.hero__keyword {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: var(--accent);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-}
-
 .hero h1,
 .section-heading h2,
 .depth__copy h2,
-.pro__intro h2,
+.pro-card__copy h2,
 .contact__copy h2 {
   margin: 0;
   letter-spacing: -0.06em;
@@ -207,12 +200,11 @@ img {
 .hero__lead,
 .section-heading p,
 .depth__copy p,
-.pro__intro p,
+.pro-card__lead,
 .contact__copy p,
 .story-card__copy p,
 .contact-card p,
-.footer__copy,
-.hero__aside span {
+.footer__copy {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
@@ -336,13 +328,13 @@ img {
 }
 
 .section-heading,
-.pro__intro {
+.pro-card__copy {
   max-width: 720px;
 }
 
 .section-heading h2,
 .depth__copy h2,
-.pro__intro h2,
+.pro-card__copy h2,
 .contact__copy h2 {
   font-size: clamp(2.4rem, 5vw, 4.2rem);
   line-height: 0.96;
@@ -350,7 +342,6 @@ img {
 }
 
 .section-heading p,
-.pro__intro p,
 .contact__copy p,
 .depth__copy p {
   max-width: 42ch;
@@ -478,30 +469,47 @@ img {
   line-height: 1.12;
 }
 
-.pro__grid {
+.pro-card {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 420px);
-  gap: 30px;
-  margin-top: 42px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 420px);
+  gap: 34px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top left, rgba(200, 255, 47, 0.05), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.01)),
+    var(--surface-strong);
+  box-shadow: var(--shadow);
+  padding: 38px;
 }
 
-.pro__screens {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  align-items: end;
+.pro-card__copy {
+  max-width: 520px;
 }
 
-.pro__panel,
+.pro-card__lead {
+  max-width: 34ch;
+  margin-top: 18px;
+}
+
+.pro-card__panel,
 .contact-card {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
-  background: var(--surface-strong);
+  background: rgba(22, 22, 25, 0.96);
   box-shadow: var(--shadow);
 }
 
-.pro__panel {
-  padding: 34px;
+.pro-card__panel {
+  max-width: 420px;
+  margin-top: 28px;
+  padding: 28px;
+}
+
+.pro-card__visual {
+  display: grid;
+  justify-items: end;
 }
 
 .pro__kicker {
@@ -518,6 +526,10 @@ img {
 .pro-list li {
   color: var(--text);
   line-height: 1.55;
+}
+
+.pro-card__cta {
+  width: 100%;
 }
 
 .contact {
@@ -729,7 +741,7 @@ img {
 @media (max-width: 1100px) {
   .hero,
   .depth__rail,
-  .pro__grid,
+  .pro-card,
   .contact {
     grid-template-columns: 1fr;
   }
@@ -755,8 +767,8 @@ img {
     position: static;
   }
 
-  .pro__screens {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .pro-card__visual {
+    justify-items: center;
   }
 }
 
@@ -767,8 +779,7 @@ img {
   }
 
   .story-grid,
-  .form-grid,
-  .pro__screens {
+  .form-grid {
     grid-template-columns: 1fr;
   }
 
@@ -829,15 +840,12 @@ img {
   }
 
   .contact-card,
-  .pro__panel {
+  .pro-card,
+  .pro-card__panel {
     padding: 22px;
   }
 
   .device-shot {
     width: min(100%, 300px);
-  }
-
-  .pro__screens .device-shot:nth-child(2) {
-    transform: none;
   }
 }
