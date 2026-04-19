@@ -11,16 +11,17 @@ import appStoreButton from "./assets/8fe7cfbd7bc7f2e23a4ac0c9482266cb2b5027f8.pn
 const appStoreUrl =
   "https://apps.apple.com/us/app/logit-track-your-workouts/id6444813640";
 const screenshotBase = `${import.meta.env.BASE_URL}screenshots/en-US`;
+const appIcon = `${import.meta.env.BASE_URL}logit-app-icon.png`;
 
 const screenshots = {
-  home: `${screenshotBase}/iPhone 17 Pro Max-01_Home_framed.png`,
-  muscleGroups: `${screenshotBase}/iPhone 17 Pro Max-02_MuscleGroupBack_framed.png`,
-  exerciseDetail: `${screenshotBase}/iPhone 17 Pro Max-03_ExerciseDetail_framed.png`,
-  workoutDetail: `${screenshotBase}/iPhone 17 Pro Max-04_WorkoutDetail_framed.png`,
-  workoutRecorder: `${screenshotBase}/iPhone 17 Pro Max-05_WorkoutRecorder_framed.png`,
-  superDropSet: `${screenshotBase}/iPhone 17 Pro Max-06_SuperDropSet_framed.png`,
-  liveActivity: `${screenshotBase}/iPhone 17 Pro Max-07_LiveActivity_framed.png`,
-  bodyFat: `${screenshotBase}/iPhone 17 Pro Max-08_BodyFat_framed.png`,
+  home: `${screenshotBase}/iPhone 17 Pro Max-01_Home.png`,
+  muscleGroups: `${screenshotBase}/iPhone 17 Pro Max-02_MuscleGroupBack.png`,
+  exerciseDetail: `${screenshotBase}/iPhone 17 Pro Max-03_ExerciseDetail.png`,
+  workoutDetail: `${screenshotBase}/iPhone 17 Pro Max-04_WorkoutDetail.png`,
+  workoutRecorder: `${screenshotBase}/iPhone 17 Pro Max-05_WorkoutRecorder.png`,
+  superDropSet: `${screenshotBase}/iPhone 17 Pro Max-06_SuperDropSet.png`,
+  liveActivity: `${screenshotBase}/iPhone 17 Pro Max-07_LiveActivity.png`,
+  bodyFat: `${screenshotBase}/iPhone 17 Pro Max-08_BodyFat.png`,
 };
 
 type DeviceShotTone = "lime" | "blue" | "teal" | "rose";
@@ -73,6 +74,15 @@ const proFeatures = [
   "Scan a Workout to turn a photo into a workout template.",
 ];
 
+function Brand({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={`brand ${compact ? "brand--compact" : ""}`.trim()}>
+      <img className="brand__icon" src={appIcon} alt="" aria-hidden="true" />
+      <span>LOGIT</span>
+    </span>
+  );
+}
+
 function AppStoreBadge({ className = "" }: { className?: string }) {
   return (
     <a
@@ -115,9 +125,8 @@ function App() {
     <div className="site-shell">
       <header className="topbar">
         <div className="topbar__inner">
-          <a className="brand" href="#top" aria-label="LOGIT home">
-            <span className="brand__dot" />
-            <span>LOGIT.</span>
+          <a href="#top" aria-label="LOGIT home">
+            <Brand />
           </a>
 
           <nav className="topbar__nav" aria-label="Primary">
@@ -137,11 +146,11 @@ function App() {
         <section className="hero">
           <div className="hero__copy reveal-up">
             <p className="hero__label">Workout Tracker & Fitness Log</p>
-            <span className="hero__keyword">TRAIN</span>
-            <h1>Train with a plan. Log workouts fast. See real progress.</h1>
+            <span className="hero__keyword">LOGIT</span>
+            <h1>Full-speed workout logging with a clearer view of progress.</h1>
             <p className="hero__lead">
-              LOGIT is a focused workout log for lifters who want fast entry,
-              clear progress, and a calmer view of their training week.
+              Built for lifters who want fast set entry, structured templates,
+              and precise progress tracking in one focused iPhone app.
             </p>
 
             <div className="hero__actions">
@@ -170,21 +179,16 @@ function App() {
                 tone="blue"
               />
             </div>
-            <div className="hero__aside">
-              <p>TRAIN</p>
-              <strong>Your training at a glance.</strong>
-              <span>Weekly goals, volume, sets, and balance in one view.</span>
-            </div>
           </div>
         </section>
 
         <section className="story" id="story">
           <div className="section-heading reveal-up">
             <p className="section-heading__eyebrow">Core Workflow</p>
-            <h2>Every screen is built to keep the session moving.</h2>
+            <h2>Designed around the moments that matter during training.</h2>
             <p>
-              Fast logging, better programming visibility, and progress tracking
-              without visual noise.
+              The product stays fast while keeping weekly balance, exercise detail,
+              and session flow easy to read.
             </p>
           </div>
 
@@ -259,10 +263,10 @@ function App() {
         <section className="pro" id="pro">
           <div className="pro__intro reveal-up">
             <p className="section-heading__eyebrow">LOGIT Pro</p>
-            <h2>Advanced tools without breaking the flow.</h2>
+            <h2>Advanced tracking without changing the rhythm.</h2>
             <p>
-              Charts, measurements, and scanned workout templates extend the same
-              fast logging workflow instead of sending you into a different app.
+              Measurements, charts, and smart template capture extend the same
+              logging flow instead of feeling like separate tools.
             </p>
           </div>
 
@@ -334,9 +338,8 @@ function App() {
       <footer className="footer">
         <div className="footer__inner">
           <div>
-            <a className="brand" href="#top">
-              <span className="brand__dot" />
-              <span>LOGIT.</span>
+            <a href="#top">
+              <Brand compact />
             </a>
             <p className="footer__copy">
               Focused workout logging, clearer progress, and calmer training data.

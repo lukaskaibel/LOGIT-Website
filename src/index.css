@@ -109,12 +109,15 @@ img {
   text-transform: uppercase;
 }
 
-.brand__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 40% 40%, #efffc0, var(--accent) 65%, #81bc10 100%);
-  box-shadow: 0 0 20px rgba(200, 255, 47, 0.5);
+.brand__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+}
+
+.brand--compact {
+  font-size: 0.95rem;
 }
 
 .topbar__nav {
@@ -291,20 +294,6 @@ img {
   background: rgba(120, 184, 255, 0.16);
 }
 
-.hero__aside {
-  position: absolute;
-  right: 0;
-  bottom: 48px;
-  max-width: 240px;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: rgba(10, 10, 12, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow);
-}
-
 .hero__cluster {
   position: relative;
   width: min(100%, 720px);
@@ -327,17 +316,11 @@ img {
   width: min(48%, 320px);
 }
 
-.hero__aside p,
 .story-card__keyword {
   margin: 0 0 10px;
   font-size: 0.78rem;
 }
 
-.hero__aside p {
-  color: var(--accent);
-}
-
-.hero__aside strong,
 .story-card__copy h3 {
   display: block;
   margin-bottom: 8px;
@@ -391,8 +374,8 @@ img {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 42%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.04), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.01)),
     var(--surface);
   box-shadow: var(--shadow);
 }
@@ -464,7 +447,7 @@ img {
   padding: 28px 28px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   box-shadow: var(--shadow);
 }
 
@@ -670,7 +653,7 @@ img {
   --device-shadow: 0 42px 100px rgba(0, 0, 0, 0.58);
   position: relative;
   width: min(100%, 350px);
-  aspect-ratio: 300 / 640;
+  aspect-ratio: 330 / 710;
   margin: 0 auto;
 }
 
@@ -701,10 +684,10 @@ img {
 .device-shot__shell {
   position: relative;
   height: 100%;
-  padding: 2.1%;
-  border-radius: clamp(2rem, 5vw, 3.6rem);
+  padding: 2.35%;
+  border-radius: clamp(2rem, 5vw, 3.8rem);
   background:
-    linear-gradient(145deg, rgba(220, 224, 238, 0.88), rgba(67, 70, 82, 0.92) 34%, rgba(10, 10, 12, 0.98) 75%),
+    linear-gradient(145deg, rgba(233, 236, 245, 0.9), rgba(92, 96, 111, 0.92) 28%, rgba(19, 19, 22, 0.99) 72%),
     #0b0b0d;
   box-shadow: var(--device-shadow);
 }
@@ -719,21 +702,55 @@ img {
   pointer-events: none;
 }
 
+.device-shot__shell::after {
+  content: "";
+  position: absolute;
+  top: 2.6%;
+  left: 50%;
+  width: 31%;
+  height: 4.2%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(22, 22, 26, 0.98), rgba(4, 4, 5, 1));
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
 .device-shot__screen {
   position: relative;
   overflow: hidden;
   height: 100%;
-  border-radius: clamp(1.7rem, 4vw, 3rem);
+  border-radius: clamp(1.8rem, 4vw, 3.1rem);
   background: #000;
 }
 
 .device-shot__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.device-shot::before,
+.device-shot::after {
+  content: "";
   position: absolute;
-  top: -13.5%;
-  left: 50%;
-  width: 132%;
-  max-width: none;
-  transform: translateX(-50%);
+  right: -1.8%;
+  width: 1.5%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(160, 165, 182, 0.9), rgba(39, 42, 50, 0.9));
+}
+
+.device-shot::before {
+  top: 18%;
+  height: 12%;
+}
+
+.device-shot::after {
+  top: 34%;
+  height: 20%;
 }
 
 .story-card .device-shot {
@@ -834,12 +851,6 @@ img {
     right: 0;
     top: 128px;
     width: min(46%, 220px);
-  }
-
-  .hero__aside {
-    position: static;
-    max-width: none;
-    margin-top: 18px;
   }
 
   .footer__inner {

@@ -10,12 +10,13 @@ const sourceRoot =
 const targetRoot = path.join(repoRoot, "public", "screenshots");
 
 const locales = ["en-US", "de-DE"];
+const screenshotPattern = /\.png$/i;
 const framedPattern = /_framed\.png$/i;
 
 function hasBundledScreenshots() {
   return locales.some((locale) => {
     const targetDir = path.join(targetRoot, locale);
-    return existsSync(targetDir) && readdirSync(targetDir).some((entry) => framedPattern.test(entry));
+    return existsSync(targetDir) && readdirSync(targetDir).some((entry) => screenshotPattern.test(entry));
   });
 }
 
@@ -41,7 +42,7 @@ for (const locale of locales) {
   mkdirSync(targetDir, { recursive: true });
 
   for (const entry of readdirSync(sourceDir)) {
-    if (!framedPattern.test(entry)) {
+    if (!screenshotPattern.test(entry) || framedPattern.test(entry)) {
       continue;
     }
 
