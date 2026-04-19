@@ -12,6 +12,21 @@ const targetRoot = path.join(repoRoot, "public", "screenshots");
 const locales = ["en-US", "de-DE"];
 const framedPattern = /_framed\.png$/i;
 
+function hasBundledScreenshots() {
+  return locales.some((locale) => {
+    const targetDir = path.join(targetRoot, locale);
+    return existsSync(targetDir) && readdirSync(targetDir).some((entry) => framedPattern.test(entry));
+  });
+}
+
+if (!existsSync(sourceRoot)) {
+  if (hasBundledScreenshots()) {
+    process.exit(0);
+  }
+
+  throw new Error(`Missing Fastlane screenshots directory: ${sourceRoot}`);
+}
+
 rmSync(targetRoot, { recursive: true, force: true });
 mkdirSync(targetRoot, { recursive: true });
 
