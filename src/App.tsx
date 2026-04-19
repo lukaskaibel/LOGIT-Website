@@ -23,34 +23,40 @@ const screenshots = {
   bodyFat: `${screenshotBase}/iPhone 17 Pro Max-08_BodyFat_framed.png`,
 };
 
+type DeviceShotTone = "lime" | "blue" | "teal" | "rose";
+
 const showcaseCards = [
   {
     keyword: "TRAIN",
     title: "Your training at a glance.",
     body: "Weekly goals, overall sets, volume, and muscle focus stay visible the second you open the app.",
     image: screenshots.home,
-    alt: "LOGIT summary screen framed for the App Store",
+    alt: "LOGIT summary screen on iPhone",
+    tone: "lime" as DeviceShotTone,
   },
   {
     keyword: "RECORD",
     title: "Log sets fast, stay in the zone.",
     body: "Start a session, move through sets quickly, and keep the workout flow uninterrupted.",
     image: screenshots.workoutRecorder,
-    alt: "LOGIT workout recorder screen framed for the App Store",
+    alt: "LOGIT workout recorder screen on iPhone",
+    tone: "rose" as DeviceShotTone,
   },
   {
     keyword: "BALANCE",
     title: "Balance every muscle group.",
     body: "See where the week is concentrated before your programming drifts out of shape.",
     image: screenshots.muscleGroups,
-    alt: "LOGIT muscle group balance screen framed for the App Store",
+    alt: "LOGIT muscle group balance screen on iPhone",
+    tone: "blue" as DeviceShotTone,
   },
   {
     keyword: "PROGRESS",
     title: "Watch your body transform.",
     body: "Track measurements and training momentum without leaving the same calm interface.",
     image: screenshots.bodyFat,
-    alt: "LOGIT body measurement screen framed for the App Store",
+    alt: "LOGIT body measurement screen on iPhone",
+    tone: "teal" as DeviceShotTone,
   },
 ];
 
@@ -78,6 +84,29 @@ function AppStoreBadge({ className = "" }: { className?: string }) {
     >
       <img src={appStoreButton} alt="Download on the App Store" />
     </a>
+  );
+}
+
+function DeviceShot({
+  image,
+  alt,
+  tone = "lime",
+  className = "",
+}: {
+  image: string;
+  alt: string;
+  tone?: DeviceShotTone;
+  className?: string;
+}) {
+  return (
+    <div className={`device-shot device-shot--${tone} ${className}`.trim()}>
+      <div className="device-shot__glow" aria-hidden="true" />
+      <div className="device-shot__shell">
+        <div className="device-shot__screen">
+          <img src={image} alt={alt} />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -111,9 +140,8 @@ function App() {
             <span className="hero__keyword">TRAIN</span>
             <h1>Train with a plan. Log workouts fast. See real progress.</h1>
             <p className="hero__lead">
-              LOGIT brings the App Store presentation onto the web: black surfaces,
-              bright lime accents, and framed screens that show the product exactly
-              as it feels on iPhone.
+              LOGIT is a focused workout log for lifters who want fast entry,
+              clear progress, and a calmer view of their training week.
             </p>
 
             <div className="hero__actions">
@@ -128,11 +156,20 @@ function App() {
           <div className="hero__stage reveal-up" style={{ animationDelay: "140ms" }}>
             <div className="hero__glow hero__glow--lime" />
             <div className="hero__glow hero__glow--blue" />
-            <img
-              className="hero__poster"
-              src={screenshots.home}
-              alt="LOGIT App Store hero screenshot"
-            />
+            <div className="hero__cluster">
+              <DeviceShot
+                className="hero__device hero__device--primary"
+                image={screenshots.home}
+                alt="LOGIT summary screen on iPhone"
+                tone="lime"
+              />
+              <DeviceShot
+                className="hero__device hero__device--secondary"
+                image={screenshots.workoutRecorder}
+                alt="LOGIT workout recorder screen on iPhone"
+                tone="blue"
+              />
+            </div>
             <div className="hero__aside">
               <p>TRAIN</p>
               <strong>Your training at a glance.</strong>
@@ -143,11 +180,11 @@ function App() {
 
         <section className="story" id="story">
           <div className="section-heading reveal-up">
-            <p className="section-heading__eyebrow">App Store Story</p>
-            <h2>The website now speaks in the same visual language as the listing.</h2>
+            <p className="section-heading__eyebrow">Core Workflow</p>
+            <h2>Every screen is built to keep the session moving.</h2>
             <p>
-              Each screen carries one message, one screenshot, and one reason to
-              keep scrolling.
+              Fast logging, better programming visibility, and progress tracking
+              without visual noise.
             </p>
           </div>
 
@@ -163,7 +200,7 @@ function App() {
                   <h3>{card.title}</h3>
                   <p>{card.body}</p>
                 </div>
-                <img src={card.image} alt={card.alt} />
+                <DeviceShot image={card.image} alt={card.alt} tone={card.tone} />
               </article>
             ))}
           </div>
@@ -175,8 +212,8 @@ function App() {
               <p className="section-heading__eyebrow">Product Depth</p>
               <h2>Built for disciplined sessions, not generic fitness noise.</h2>
               <p>
-                LOGIT keeps the interface dense but readable. The same design rules
-                that shape the app now shape the website.
+                LOGIT keeps serious training data readable at a glance, from
+                exercise history to live session tracking.
               </p>
 
               <ul className="detail-list">
@@ -192,9 +229,10 @@ function App() {
             <div className="depth__visual reveal-up" style={{ animationDelay: "120ms" }}>
               <div className="poster-stack">
                 <figure className="poster-stack__primary">
-                  <img
-                    src={screenshots.exerciseDetail}
-                    alt="LOGIT personal bests exercise detail screenshot"
+                  <DeviceShot
+                    image={screenshots.exerciseDetail}
+                    alt="LOGIT exercise detail screen on iPhone"
+                    tone="lime"
                   />
                   <figcaption>
                     <span>TRACK</span>
@@ -203,9 +241,10 @@ function App() {
                 </figure>
 
                 <figure className="poster-stack__secondary">
-                  <img
-                    src={screenshots.liveActivity}
-                    alt="LOGIT live activity lock screen screenshot"
+                  <DeviceShot
+                    image={screenshots.liveActivity}
+                    alt="LOGIT live activity screen on iPhone"
+                    tone="blue"
                   />
                   <figcaption>
                     <span>LIVE</span>
@@ -220,17 +259,25 @@ function App() {
         <section className="pro" id="pro">
           <div className="pro__intro reveal-up">
             <p className="section-heading__eyebrow">LOGIT Pro</p>
-            <h2>Premium tools, shown through the actual product.</h2>
+            <h2>Advanced tools without breaking the flow.</h2>
             <p>
               Charts, measurements, and scanned workout templates extend the same
-              fast logging workflow instead of creating a separate experience.
+              fast logging workflow instead of sending you into a different app.
             </p>
           </div>
 
           <div className="pro__grid">
             <div className="pro__screens reveal-up" style={{ animationDelay: "100ms" }}>
-              <img src={screenshots.bodyFat} alt="LOGIT body metrics screenshot" />
-              <img src={screenshots.superDropSet} alt="LOGIT superset workout screenshot" />
+              <DeviceShot
+                image={screenshots.bodyFat}
+                alt="LOGIT body metrics screen on iPhone"
+                tone="teal"
+              />
+              <DeviceShot
+                image={screenshots.superDropSet}
+                alt="LOGIT dropset workout screen on iPhone"
+                tone="rose"
+              />
             </div>
 
             <div className="pro__panel reveal-up" style={{ animationDelay: "180ms" }}>
