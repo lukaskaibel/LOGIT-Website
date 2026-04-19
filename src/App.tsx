@@ -14,6 +14,7 @@ const appStoreUrl =
   "https://apps.apple.com/us/app/logit-track-your-workouts/id6444813640";
 const screenshotBase = `${import.meta.env.BASE_URL}screenshots/en-US`;
 const appIcon = `${import.meta.env.BASE_URL}logit-app-icon.png`;
+const logitWordmark = `${import.meta.env.BASE_URL}logit-wordmark-dark.png`;
 
 const screenshots = {
   home: `${screenshotBase}/iPhone 17 Pro Max-01_Home.png`,
@@ -77,6 +78,14 @@ const proFeatures = [
 ];
 
 function Brand({ compact = false }: { compact?: boolean }) {
+  if (!compact) {
+    return (
+      <span className="brand brand--wordmark">
+        <img className="brand__wordmark" src={logitWordmark} alt="LOGIT" />
+      </span>
+    );
+  }
+
   return (
     <span className={`brand ${compact ? "brand--compact" : ""}`.trim()}>
       <img className="brand__icon" src={appIcon} alt="" aria-hidden="true" />
