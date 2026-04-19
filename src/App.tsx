@@ -9,12 +9,12 @@ import { DeviceFrameset } from "react-device-frameset";
 import "react-device-frameset/styles/marvel-devices.min.css";
 import { ContactForm } from "./components/ContactForm";
 import appStoreButton from "./assets/8fe7cfbd7bc7f2e23a4ac0c9482266cb2b5027f8.png";
+import appIcon from "./assets/logit-app-icon.png";
+import logitWordmark from "./assets/logit-wordmark-dark.png";
 
 const appStoreUrl =
   "https://apps.apple.com/us/app/logit-track-your-workouts/id6444813640";
 const screenshotBase = `${import.meta.env.BASE_URL}screenshots/en-US`;
-const appIcon = `${import.meta.env.BASE_URL}logit-app-icon.png`;
-const logitWordmark = `${import.meta.env.BASE_URL}logit-wordmark-dark.png`;
 
 const screenshots = {
   home: `${screenshotBase}/iPhone 17 Pro Max-01_Home.png`,
