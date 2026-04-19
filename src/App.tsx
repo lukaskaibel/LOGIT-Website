@@ -5,6 +5,8 @@ import {
   Mail,
   ShieldCheck,
 } from "lucide-react";
+import { DeviceFrameset } from "react-device-frameset";
+import "react-device-frameset/styles/marvel-devices.min.css";
 import { ContactForm } from "./components/ContactForm";
 import appStoreButton from "./assets/8fe7cfbd7bc7f2e23a4ac0c9482266cb2b5027f8.png";
 
@@ -102,20 +104,26 @@ function DeviceShot({
   alt,
   tone = "lime",
   className = "",
+  zoom = 0.78,
 }: {
   image: string;
   alt: string;
   tone?: DeviceShotTone;
   className?: string;
+  zoom?: number;
 }) {
   return (
     <div className={`device-shot device-shot--${tone} ${className}`.trim()}>
       <div className="device-shot__glow" aria-hidden="true" />
-      <div className="device-shot__shell">
+      <DeviceFrameset
+        device="iPhone X"
+        zoom={zoom}
+        className="device-shot__frame"
+      >
         <div className="device-shot__screen">
           <img src={image} alt={alt} />
         </div>
-      </div>
+      </DeviceFrameset>
     </div>
   );
 }
@@ -171,12 +179,14 @@ function App() {
                 image={screenshots.home}
                 alt="LOGIT summary screen on iPhone"
                 tone="lime"
+                zoom={0.96}
               />
               <DeviceShot
                 className="hero__device hero__device--secondary"
                 image={screenshots.workoutRecorder}
                 alt="LOGIT workout recorder screen on iPhone"
                 tone="blue"
+                zoom={0.76}
               />
             </div>
           </div>
@@ -237,6 +247,7 @@ function App() {
                     image={screenshots.exerciseDetail}
                     alt="LOGIT exercise detail screen on iPhone"
                     tone="lime"
+                    zoom={0.82}
                   />
                   <figcaption>
                     <span>TRACK</span>
@@ -249,6 +260,7 @@ function App() {
                     image={screenshots.liveActivity}
                     alt="LOGIT live activity screen on iPhone"
                     tone="blue"
+                    zoom={0.68}
                   />
                   <figcaption>
                     <span>LIVE</span>
@@ -276,11 +288,13 @@ function App() {
                 image={screenshots.bodyFat}
                 alt="LOGIT body metrics screen on iPhone"
                 tone="teal"
+                zoom={0.72}
               />
               <DeviceShot
                 image={screenshots.superDropSet}
                 alt="LOGIT dropset workout screen on iPhone"
                 tone="rose"
+                zoom={0.72}
               />
             </div>
 

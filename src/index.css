@@ -650,10 +650,8 @@ img {
 }
 
 .device-shot {
-  --device-shadow: 0 42px 100px rgba(0, 0, 0, 0.58);
   position: relative;
   width: min(100%, 350px);
-  aspect-ratio: 330 / 710;
   margin: 0 auto;
 }
 
@@ -681,76 +679,27 @@ img {
   background: radial-gradient(circle, rgba(255, 100, 100, 0.28), transparent 70%);
 }
 
-.device-shot__shell {
+.device-shot__frame {
   position: relative;
-  height: 100%;
-  padding: 2.35%;
-  border-radius: clamp(2rem, 5vw, 3.8rem);
-  background:
-    linear-gradient(145deg, rgba(233, 236, 245, 0.9), rgba(92, 96, 111, 0.92) 28%, rgba(19, 19, 22, 0.99) 72%),
-    #0b0b0d;
-  box-shadow: var(--device-shadow);
+  z-index: 1;
+  transform-origin: center top;
+  filter: drop-shadow(0 36px 90px rgba(0, 0, 0, 0.56));
 }
 
-.device-shot__shell::before {
-  content: "";
-  position: absolute;
-  inset: 1%;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-.device-shot__shell::after {
-  content: "";
-  position: absolute;
-  top: 2.6%;
-  left: 50%;
-  width: 31%;
-  height: 4.2%;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(22, 22, 26, 0.98), rgba(4, 4, 5, 1));
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.35);
-  z-index: 2;
-}
-
-.device-shot__screen {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  border-radius: clamp(1.8rem, 4vw, 3.1rem);
+.device-shot__frame .screen {
   background: #000;
 }
 
+.device-shot__screen,
 .device-shot__screen img {
   width: 100%;
   height: 100%;
+}
+
+.device-shot__screen img {
+  display: block;
   object-fit: cover;
   object-position: center top;
-}
-
-.device-shot::before,
-.device-shot::after {
-  content: "";
-  position: absolute;
-  right: -1.8%;
-  width: 1.5%;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(160, 165, 182, 0.9), rgba(39, 42, 50, 0.9));
-}
-
-.device-shot::before {
-  top: 18%;
-  height: 12%;
-}
-
-.device-shot::after {
-  top: 34%;
-  height: 20%;
 }
 
 .story-card .device-shot {
