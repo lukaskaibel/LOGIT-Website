@@ -16,10 +16,8 @@ ROOT = Path(__file__).resolve().parent.parent
 ASSETS = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / "LOGIT" / "LOGIT" / "Assets"
 SITE = ROOT / "site"
 
-# The address the app's Support button writes to (FEEDBACK_EMAIL in the app's Constants.swift). The texts give
-# logit-fitness@gmail.com, which can't exist: Gmail addresses have no hyphens.
+# The address the app's Support button writes to (FEEDBACK_EMAIL in the app's Constants.swift), the same the texts give.
 EMAIL = "logit.fitness@gmail.com"
-WRONG_EMAIL = "logit-fitness@gmail.com"
 
 
 # --- A little Markdown: the headings, paragraphs, lists, tables, links and emphasis these texts use. ---------------
@@ -151,7 +149,7 @@ def page(slug, title, description, body):
 
 
 def build(slug, source, title, description, before, after=""):
-    text = (ASSETS / source).read_text(encoding="utf-8").replace(WRONG_EMAIL, EMAIL)
+    text = (ASSETS / source).read_text(encoding="utf-8")
     content = markdown(text)
     # The first line of each text is its date: show it under the introduction, like the other pages do.
     date = re.match(r"<p><em>(.*?)</em></p>\n?", content)
