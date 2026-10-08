@@ -42,5 +42,5 @@ Python 3, and `extract-phones.py` needs Pillow and NumPy.
   `logit_terms_and_conditions.md`), run `python3 tools/build-legal.py`. It writes `site/privacy/` and `site/terms/`;
   edit the texts in the app, not those pages. Only the English originals are published: the app's translations are
   marked as machine translated and not yet reviewed.
-- **Contact address:** `logit.fitness@gmail.com`, the address the app's Support button writes to. It appears in
+- **Contact address:** `logit.app@icloud.com`, the address the app's Support button writes to. It appears in
   `site/contact/`, `site/impressum/` and `tools/build-legal.py`.

@@ -17,7 +17,7 @@ ASSETS = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / "LOGIT" / "LO
 SITE = ROOT / "site"
 
 # The address the app's Support button writes to (FEEDBACK_EMAIL in the app's Constants.swift), the same the texts give.
-EMAIL = "logit.fitness@gmail.com"
+EMAIL = "logit.app@icloud.com"
 
 
 # --- A little Markdown: the headings, paragraphs, lists, tables, links and emphasis these texts use. ---------------
