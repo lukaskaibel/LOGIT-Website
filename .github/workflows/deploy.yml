@@ -1,9 +1,14 @@
+# Publishes site/ to GitHub Pages (https://lukaskaibel.github.io/LOGIT-Website/) when it changes on main.
+# The site is plain HTML, CSS and a little JavaScript: nothing to install or build.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
+    paths:
+      - site/**
+      - .github/workflows/deploy.yml
   workflow_dispatch:
 
 permissions:
@@ -13,44 +18,19 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build site
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
         uses: actions/deploy-pages@v4
