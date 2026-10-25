@@ -14,6 +14,7 @@ law ask for:
 | Privacy Policy | `/privacy/` | Privacy Policy URL |
 | Terms of Use | `/terms/` | |
 | Impressum | `/impressum/` | |
+| iPhone Duo | `/iphone-duo/` | Supplemental material of the App Store featuring nomination for 5.5 |
 
 Each screen of the carousel has its own address too, e.g. `/#live` or `/#balance`.
 
@@ -42,5 +43,8 @@ Python 3, and `extract-phones.py` needs Pillow and NumPy.
   `logit_terms_and_conditions.md`), run `python3 tools/build-legal.py`. It writes `site/privacy/` and `site/terms/`;
   edit the texts in the app, not those pages. Only the English originals are published: the app's translations are
   marked as machine translated and not yet reviewed.
+- **iPhone Duo screenshots:** `python3 tools/build-duo.py <folder>` turns a folder of Duo screenshots
+  (`open-sideways/`, `open-upright/`, `closed/` and an `INDEX.md` naming each screen) into `site/iphone-duo/` and
+  `site/images/duo/`. It needs `cwebp`. The four screens at the top of the page and their lines are in the script.
 - **Contact address:** `logit.app@icloud.com`, the address the app's Support button writes to. It appears in
   `site/contact/`, `site/impressum/` and `tools/build-legal.py`.
