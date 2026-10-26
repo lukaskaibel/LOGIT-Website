@@ -35,10 +35,11 @@ HIGHLIGHTS = [
     (["open-sideways/02_strength"],
      "Charts use the full width, the way Health does on iPad."),
     (["open-sideways/15b_recorder_timer"],
-     "During a workout the sets stay in one centered column, like on a phone. The rest timer and the other controls "
-     "move into the column beside it."),
+     "During a workout the sets stay in one centered column, like on a phone. The rest timer, undo and redo move into "
+     "the column beside it, and Next and hide stay on the keyboard."),
     (["closed/15b_recorder_timer", "closed/15c_recorder_timer_paused"],
-     "Closed, the rest timer stands upright under the clock. Pause shows while it runs, play and stop once it's paused."),
+     "Closed, the rest timer stands upright under the clock, with undo and redo below it. Pause shows while the timer "
+     "runs, play and stop once it's paused."),
 ]
 
 
